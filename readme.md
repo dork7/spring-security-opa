@@ -1,4 +1,4 @@
-``` THis branch contain integration of opa with spring only```
+``` This branch contain integration of opa with spring only```
 
 curl --location --request PUT 'localhost:8181/v1/policies/opaweb/authz' \
   --header 'Content-Type: text/plain' \
