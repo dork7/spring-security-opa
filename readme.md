@@ -1,4 +1,4 @@
-``` This branch contain integration of opa with spring only```
+``` This branch contain integration of opa with spring only.```
 
 curl --location --request PUT 'localhost:8181/v1/policies/opaweb/authz' \
   --header 'Content-Type: text/plain' \
@@ -10,7 +10,7 @@ curl -kv http://localhost:8080/bye --header 'Authorization: Basic YWRtaW4xMjM6YW
 
 postman link -> https://www.getpostman.com/collections/8565e0f5d433cb9b9526
 
-Usage : 
+```Usage :``` 
 
 -> This is just a simple spring app with opa authorization for api access, with two roles defined in MyUserDetailService class
 
