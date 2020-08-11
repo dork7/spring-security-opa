@@ -1,0 +1,6 @@
+{
+  "input": {
+    "user": "alice",
+    "operation": "write"
+  }
+}
