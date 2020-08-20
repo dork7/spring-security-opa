@@ -1,5 +1,4 @@
-docker run --name opaCont -p 8181:8181 openpolicyagent/opa \
-    run --server --log-level debug
+docker run --name opaCont -p 8181:8181 openpolicyagent/opa run --server --log-level debug
 
 curl -X PUT http://localhost:8181/v1/data/myapi/acl --data-binary @myapi-acl.json
 
