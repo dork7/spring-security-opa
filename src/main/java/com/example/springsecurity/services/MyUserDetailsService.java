@@ -17,7 +17,7 @@ import java.util.List;
 public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        String role = "admsin";
+        String role = "admein";
         List<SimpleGrantedAuthority> authList = getAuthorities(role);
         System.out.println("USer Role = " + authList);
 //        return new User("admin123" , "admin", authList); // only hello

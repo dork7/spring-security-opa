@@ -1,6 +1,7 @@
 package com.example.springsecurity.opa;
 
 import org.springframework.http.HttpEntity;
+import org.springframework.scheduling.support.SimpleTriggerContext;
 import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.core.Authentication;
@@ -49,13 +50,14 @@ public class OPAVoter implements AccessDecisionVoter<Object> {
         }
 
         String[] path = filter.getRequest().getRequestURI().replaceAll("^/|/$", "").split("/");
-
+        String jwtToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InNhbG1hbiIsImlhdCI6MTUxNjIzOTAyMn0.u6nBhlILdZT04AM5BUWlwHUVXtiH-dsVpikBWUju27M";
         Map<String, Object> input = new HashMap<String, Object>();
         input.put("auth", authentication);
         input.put("roles", authentication.getAuthorities());
         input.put("method", filter.getRequest().getMethod());
         input.put("path", path);
         input.put("headers", headers);
+        input.put("jwt" , jwtToken);
 
         HttpEntity<?> request = new HttpEntity<>(new OPADataRequest(input));
         OPADataResponse response = restTemplate.postForObject(this.opaAuthURL, request, OPADataResponse.class);
