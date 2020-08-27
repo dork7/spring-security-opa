@@ -28,35 +28,6 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Value("${opa.auth.url}")
     private String opaAuthURL;
 
-    @Autowired
-    private AuthenticationEntryPoint authEntryPoint;
-
-    @Autowired
-    private MyUserDetailsService myUserDetailService;
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(myUserDetailService);
-    }
-
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("john123").password(passwordEncoder().encode("password")).roles("USER")
-//                .and()
-//                .withUser("admin123").password(passwordEncoder().encode("admin")).roles("ADMIN");
-//        System.out.println("HASH password  ->>>>>>>>> " + passwordEncoder().encode("password"));
-//    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return NoOpPasswordEncoder.getInstance();
-    }
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
