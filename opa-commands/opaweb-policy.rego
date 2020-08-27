@@ -5,15 +5,18 @@ default allow = false
 allow {
   input.method == "GET"
   input.path = ["hello"]
-  is_user
+  #input.path = ["opa_app" , "hello"]
+  #input.path = "/opa_app/bye"
+  # is_user
   claims.name == "salman"
 }
 
 allow {
   input.method == "GET"
   input.path = ["bye"]
-  is_admin
-  claims.name == "salman"
+  #input.path = ["opa_app" ,"bye"]
+ # is_admin
+  claims.name == "hamza"
 }
 
 
@@ -43,7 +46,7 @@ claims := payload {
 }
 
 bearer_token := t {
-	v := input.jwt
+	v := input.headers.jwt
 	startswith(v, "Bearer ")
 	t := substring(v, count("Bearer "), -1)
 }

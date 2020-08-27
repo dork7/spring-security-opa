@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-docker run --name opaCont -p 8181:8181 openpolicyagent/opa run --server --log-level debug
+docker run --name opaCont -p 8181:8181 --network="mnetwork" openpolicyagent/opa run --server --log-level debug
 =======
 ``` This branch contain integration of opa with spring only.```
 
@@ -52,3 +52,20 @@ opa playground Link
 
 
 >>>>>>> spring_opa
+post man link 
+>
+>https://www.getpostman.com/collections/b4002e56b73a34ec02f3
+>
+>
+>docker :
+>
+docker build -t authz .
+>
+docker run -i -p 8282:8282 --network="mnetwork" --name authCont  authz
+>
+RUN sed -i 's/port="8080"/port="8282"/' /usr/local/tomcat/conf/server.xml
+>
+docker rm authCont 
+ 
+
+10.10.1.210:23
